@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PatuKrishi - Sustainable Farming</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  /* Your existing CSS here (unchanged) */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  :root {
+    --primary: #2e7d32;
+    --primary-light: #4caf50;
+    --primary-dark: #1b5e20;
+    --secondary: #ff9800;
+    --text: #333;
+    --text-light: #666;
+    --light-bg: #f9f9f9;
+    --white: #fff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  body {
+    color: var(--text);
+    background-color: var(--light-bg);
+    line-height: 1.6;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  header {
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo img {
+    height: 40px;
+    border-radius: 8px;
+  }
+
+  .logo h1 {
+    font-size: 1.5rem;
+    color: var(--primary);
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: var(--primary);
+  }
+
+  .nav-links a.active {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .mobile-menu {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  /* Hero Section with Fading Images */
+  .hero {
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+  }
+
+  .slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .slide.active {
+    opacity: 1;
+  }
+
+  .slide-1 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.pinimg.com/736x/06/a7/6a/06a76adb6cc90b8523bc53dd8db16db2.jpg');
+  }
+
+  .slide-2 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://tse4.mm.bing.net/th/id/OIP.DIVsiIUj2mEn9aMi7c2LQwHaE8?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3');
+  }
+
+  .slide-3 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://scitechdaily.com/images/Sunrise-Corn-Farm-Field.jpg');
+  }
+
+  .slide-4 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    color: var(--white);
+    padding: 0 20px;
+  }
+
+  .hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--secondary);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #e68900;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  /* Section Styles */
+  section {
+    padding: 5rem 0;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-title h2 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+
+  .section-title p {
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* About Section */
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .about-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-dark);
+  }
+
+  .about-text p {
+    margin-bottom: 1.5rem;
+  }
+
+  .about-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+  }
+
+  /* Tools Section */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .tool-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+    cursor: pointer;
+  }
+
+  .tool-card:hover {
+    transform: translateY(-10px);
+  }
+
+  .tool-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 3rem;
+  }
+
+  .tool-content {
+    padding: 1.5rem;
+  }
+
+  .tool-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+
+  /* Contact Section */
+  .contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .contact-icon {
+    background-color: var(--primary-light);
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-form {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+
+  textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+  }
+
+  /* Success Message */
+  .success-message {
+    background-color: #e8f5e9;
+    border-left: 4px solid var(--primary);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    display: none;
+  }
+
+  .success-message h3 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Notification System */
+  .notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--primary);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateX(150%);
+    transition: transform 0.3s ease;
+  }
+
+  .notification.show {
+    transform: translateX(0);
+  }
+
+  .notification.success {
+    background-color: var(--primary);
+  }
+
+  .notification.error {
+    background-color: #f44336;
+  }
+
+  /* Footer */
+  footer {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    padding: 3rem 0 1rem;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--secondary);
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover {
+    color: var(--secondary);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    color: var(--white);
+    transition: all 0.3s;
+  }
+
+  .social-links a:hover {
+    background-color: var(--secondary);
+    transform: translateY(-3px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #ccc;
+    font-size: 0.9rem;
+  }
+
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .modal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 1rem;
+  }
+
+  .modal-header h2 {
+    color: var(--primary);
+    margin: 0;
+  }
+
+  .close-modal {
+    background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light);
+  }
+  .close-modal:hover { color: var(--primary); }
+
+  /* Weather Tool Styles */
+  .weather-tool {
+    text-align: center;
+  }
+  .weather-input-group {
+    display: flex; gap: 0.6rem; margin-bottom: 1rem; flex-wrap: wrap;
+  }
+  .weather-input-group input {
+    flex: 1; min-width: 200px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem;
+  }
+  .weather-input-group button {
+    padding: 10px 15px; background-color: var(--primary); color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: 500; transition: background-color 0.3s;
+  }
+  .weather-input-group button:hover { background-color: var(--primary-dark); }
+  .weather-result {
+    margin-top: 1rem; padding: 1rem; background-color: #f5f5f5; border-radius: 5px; min-height: 60px; display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Mandi Tool Styles */
+  .mandi-tool {
+    text-align: center;
+  }
+  .search-input-group {
+    display: flex; gap: 0.6rem; margin-bottom: 1.5rem; flex-wrap: wrap;
+  }
+  .search-input-group select {
+    flex: 1; min-width: 150px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; background-color: white;
+  }
+  .search-input-group button {
+    padding: 10px 20px; background-color: var(--primary); color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: 500; transition: background-color 0.3s;
+  }
+  .search-input-group button:hover { background-color: var(--primary-dark); }
+  .mandi-result {
+    margin-top: 1rem; padding: 1rem; background-color: #f5f5f5; border-radius: 5px;
+  }
+  .price-table {
+    width: 100%; border-collapse: collapse; margin-top: 1rem;
+  }
+  .price-row {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1rem; padding: 0.8rem; border-bottom: 1px solid #ddd; align-items: center;
+  }
+  .price-row.header {
+    background-color: var(--primary-light); color: white; font-weight: bold; border-radius: 5px 5px 0 0;
+  }
+  .price-row:last-child { border-bottom: none; }
+  .mandi-info {
+    margin-top: 1rem; padding: 1rem; background-color: #e3f2fd; border-radius: 5px; border-left: 4px solid var(--primary);
+  }
+  .mandi-info p { margin: 0; font-size: 0.9rem; color: var(--text); }
+  .sample-data h3 { color: var(--primary); margin-bottom: 1rem; text-align: center; }
+  .loading { text-align: center; padding: 2rem; color: var(--primary); font-weight: 500; }
+  .error-message { text-align: center; padding: 1rem; background-color: #ffebee; color: #c62828; border-radius: 5px; border-left: 4px solid #f44336; }
+
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+    .about-content, .contact-container { grid-template-columns: 1fr; }
+    .hero-content h2 { font-size: 2.5rem; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .mobile-menu { display: block; }
+    .hero-content h2 { font-size: 2rem; }
+    .hero-content p { font-size: 1rem; }
+    .weather-input-group, .search-input-group { flex-direction: column; }
+    .weather-input-group input, .search-input-group select { min-width: 100%; }
+    .price-row { grid-template-columns: 1fr; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<!-- Background Music -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+<!-- Notification System -->
+<div class="notification" id="notification">
+  <i class="fas fa-check-circle"></i>
+  <span id="notification-text">Notification message</span>
+</div>
+
+<!-- Weather Modal -->
+<div class="modal" id="weatherModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>🌦️ India Weather Finder</h2>
+      <button class="close-modal" id="closeWeatherModal">&times;</button>
+    </div>
+    <div class="weather-tool">
+      <div class="weather-input-group">
+        <input id="cityInput" type="text" placeholder="Enter city or village (India)" />
+        <button onclick="getWeatherByCity()">Search</button>
+        <button onclick="getWeatherByLocation()">📍 Use My Location</button>
+      </div>
+      <div id="weatherResult" class="weather-result"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Mandi Prices Modal -->
+<div class="modal" id="mandiModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>📊 Mandi Prices - Live Market Rates</h2>
+      <button class="close-modal" id="closeMandiModal">&times;</button>
+    </div>
+    <div class="mandi-tool">
+      <div class="search-section">
+        <div class="search-input-group">
+          <select id="stateSelect" onchange="populateDistricts()">
+            <option value="">Select State</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="West Bengal">West Bengal</option>
+          </select>
+
+          <select id="commoditySelect">
+            <option value="">Select Commodity</option>
+            <option value="wheat">Wheat</option>
+            <option value="rice">Rice</option>
+            <option value="tomato">Tomato</option>
+            <option value="potato">Potato</option>
+            <option value="onion">Onion</option>
+            <option value="cotton">Cotton</option>
+            <option value="maize">Maize</option>
+            <option value="sugarcane">Sugarcane</option>
+            <option value="soybean">Soybean</option>
+            <option value="mustard">Mustard</option>
+            <option value="barley">Barley</option>
+            <option value="millet">Millet</option>
+            <option value="groundnut">Groundnut</option>
+            <option value="pulses">Pulses</option>
+            <option value="chili">Chili</option>
+            <option value="cabbage">Cabbage</option>
+            <option value="cauliflower">Cauliflower</option>
+            <option value="brinjal">Brinjal</option>
+            <option value="cucumber">Cucumber</option>
+            <option value="banana">Banana</option>
+            <option value="mango">Mango</option>
+            <option value="apple">Apple</option>
+            <option value="grapes">Grapes</option>
+            <option value="orange">Orange</option>
+            <option value="pineapple">Pineapple</option>
+            <option value="guava">Guava</option>
+            <option value="watermelon">Watermelon</option>
+            <option value="muskmelon">Muskmelon</option>
+            <option value="lemon">Lemon</option>
+            <option value="papaya">Papaya</option>
+          </select>
+
+          <button onclick="searchMandiPrices()">Search Prices</button>
+        </div>
+      </div>
+
+      <div class="mandi-result" id="mandiResult">
+        <div class="sample-data">
+          <h3>Latest Market Rates (Sample Data)</h3>
+          <div class="price-table" id="priceTable">
+            <div class="price-row header">
+              <div>Mandi</div>
+              <div>Commodity</div>
+              <div>Price (₹/Unit)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mandi-info">
+        <p><strong>Note:</strong> For real-time mandi prices, connect with your local agricultural department or visit government portals like e-NAM.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Header -->
+<header>
+  <div class="container">
+    <nav class="navbar">
+      <div class="logo">
+        <img src="https://yt3.ggpht.com/a4AV1GnWgXslOR6gGL8CXlwP39eyqHmWbOapvggsgvY5x-ClLTEHN579i1CGuqbNiZTXYT4D=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="PatuKrishi Logo" />
+        <h1>PatuKrishi</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+  <div class="slideshow">
+    <div class="slide slide-1 active"></div>
+    <div class="slide slide-2"></div>
+    <div class="slide slide-3"></div>
+    <div class="slide slide-4"></div>
+  </div>
+  <div class="hero-content">
+    <h2>Welcome to PatuKrishi</h2>
+    <p>PatuKrishi is an innovative agricultural platform dedicated to empowering farmers with modern tools, techniques, and knowledge to enhance productivity and sustainability in farming practices.</p>
+    <a href="#about" class="btn">Learn More</a>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+  <div class="container">
+    <div class="section-title">
+      <h2>About Us</h2>
+      <p>Learn more about our mission, vision, and the team behind PatuKrishi</p>
+    </div>
+    <div class="about-content">
+      <div class="about-text">
+        <h3>Our Story</h3>
+        <p>PatuKrishi-Pro is a digital agriculture platform designed to help Indian farmers with modern, easy-to-use tools. It offers features like crop advisory based on region and season, photo-based soil fertility checks, weather and climate forecasting, mandi price updates, and an AI-powered Krishi Bot that answers farming questions in English with voice support.</p>
+        <p>It also includes a Lens tool for scanning and translating text into regional languages, making information more accessible.</p>
+        <p>Available in Standard and Pro versions with free technical support and a three-year guarantee, PatuKrishi-Pro focuses on bringing technology directly to farmers' hands to improve productivity, planning, and decision-making. [Future assumptions]</p>
+<p>Check out PatuKrishi Standard by clicking on the picture.</p>
+        <a href="#contact" class="btn">Get In Touch</a>
+      </div>
+      <div class="about-image">
+  <div style="height: 400px; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+    <a href="https://Techman-cyber.github.io/PatuKrishi/" target="_blank">
+      <img src="https://static.vecteezy.com/system/resources/previews/018/903/229/large_2x/smart-farming-agricultural-technology-and-organic-agriculture-woman-using-research-tablet-and-studying-development-of-rice-varieties-in-field-concept-of-smart-farming-modern-agricultural-business-photo.jpg" alt="Smart Farming" style="width: 100%; height: auto; border-radius: 10px;">
+    </a>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- Tools Section -->
+<section id="tools" style="background-color: var(--white);">
+  <div class="container">
+    <div class="section-title">
+      <h2>Our Tools</h2>
+      <p>Explore our comprehensive suite of agricultural tools designed to enhance your farming experience</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card" onclick="openWeatherModal()">
+        <div class="tool-img" style="background-image: url('https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-cloud-sun" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"></i>
+        </div>
+        <div class="tool-content">
+          <h3>Weather Forecast</h3>
+          <p>Get accurate weather predictions and alerts to plan your farming activities effectively and protect your crops from adverse conditions.</p>
+        </div>
+      </div>
+      <div class="tool-card" onclick="openMandiModal()">
+        <div class="tool-img" style="background-image: url('https://th.bing.com/th/id/R.c655f6ad4bf1a12f920298b6e087200b?rik=KNLe3mk2jiJUjA&riu=http%3a%2f%2fcontent.kens5.com%2fphoto%2f2017%2f10%2f22%2fvegetables_1508727313637_11456014_ver1.0.jpg&ehk=Fq8Eoa9aKzsUPDZ8DtBhyVemrHDc8oqvw4qs3PvJii8%3d&risl=&pid=ImgRaw&r=0');">
+          <i class="fas fa-chart-line" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"></i>
+        </div>
+        <div class="tool-content">
+          <h3>Mandi Prices</h3>
+          <p>Access real-time market prices for various crops across different mandis to make informed selling decisions and maximize profits.</p>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-img" style="background-image: url('https://cdn.agdaily.com/wp-content/uploads/2018/09/bg-corn_field-001-naramit.jpg');">
+          <i class="fas fa-hands-helping" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"></i>
+        </div>
+        <div class="tool-content">
+          <h3>Crop Advisory</h3>
+          <p>Receive personalized crop recommendations, planting schedules, and cultivation techniques based on your soil and climate conditions.</p>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-img" style="background-image: url('https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-tools" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"></i>
+        </div>
+        <div class="tool-content">
+          <h3>Krishi Tools</h3>
+          <p>Access a comprehensive collection of agricultural calculators, planning tools, and resource management applications.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <div class="container">
+    <div class="section-title">
+      <h2>Contact Us</h2>
+      <p>Get in touch with our team for any inquiries or support</p>
+    </div>
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+      <h3>Thank You!</h3>
+      <p>We have received your message and will get back to you soon.</p>
+    </div>
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-user"></i></div>
+          <div>
+            <h3>Owner</h3>
+            <p>Chanakya Sahni</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <h3>Email Address</h3>
+            <p>chanakyasahni8@gmail.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <!-- Updated form with mailto functionality -->
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" class="form-control" placeholder="Enter subject" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" class="form-control" placeholder="Enter your message" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>PatuKrishi</h3>
+<p>Empowering farmers with innovative agricultural solutions for a sustainable future.</p>
+<div class="social-links">
+  <a href="https://www.youtube.com/@PatuKrishi" target="_blank">
+    <i class="fab fa-youtube"></i>
+  </a>
+</div>
+</div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#tools">Tools</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Our Tools</h3>
+        <ul class="footer-links">
+          <li><a href="#" onclick="openWeatherModal()">Weather Forecast</a></li>
+          <li><a href="#" onclick="openMandiModal()">Mandi Prices</a></li>
+          <li><a href="#">Crop Advisory</a></li>
+          <li><a href="#">Krishi Tools</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter to get updates on our latest tools and farming techniques.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <div class="form-group">
+            <input type="email" id="newsletterEmail" class="form-control" placeholder="Your email address" required />
+          </div>
+          <button type="submit" class="btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 PatuKrishi. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Slideshow functionality
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+
+  function showSlide(n) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }
+
+  function nextSlide() {
+    showSlide(currentSlide + 1);
+  }
+
+  setInterval(nextSlide, 5000);
+
+  // Mobile menu toggle
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const navLinks = document.querySelector('.nav-links');
+
+  mobileMenu.addEventListener('click', () => {
+    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  // Smooth scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+        if (window.innerWidth <= 768) {
+          navLinks.style.display = 'none';
+        }
+      }
+    });
+  });
+const music = document.getElementById("bgMusic");
+    music.volume = 0.2; // keep volume low
+
+    // Try autoplay
+    music.play().catch(() => {
+      // If autoplay is blocked, start when user clicks anywhere
+      document.body.addEventListener("click", () => {
+        music.play();
+      }, { once: true });
+    });
+
+
+  // Notification
+  const notification = document.getElementById('notification');
+  const notificationText = document.getElementById('notification-text');
+
+  function showNotification(message, type = 'success') {
+    notificationText.textContent = message;
+    notification.className = `notification ${type} show`;
+    setTimeout(() => {
+      notification.classList.remove('show');
+    }, 4000);
+  }
+
+  // Contact form
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+    const emailSubject = "New Message from PatuKrishi Website";
+    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0ASubject: ${subject}%0D%0AMessage: ${message}`;
+    const mailtoLink = `mailto:chanakyasahni8@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${body}`;
+    window.location.href = mailtoLink;
+    const successMessage = document.getElementById('successMessage');
+    successMessage.style.display = 'block';
+    successMessage.scrollIntoView({ behavior: 'smooth' });
+    showNotification('Thank You! Your message has been sent to Chanakya Sahni.');
+    this.reset();
+    setTimeout(() => {
+      successMessage.style.display = 'none';
+    }, 5000);
+  });
+
+  // Newsletter form
+  document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('newsletterEmail').value;
+    console.log('Newsletter subscription:', email);
+    showNotification('Thank you for subscribing to our newsletter!');
+    this.reset();
+  });
+
+  // Weather functions
+  const apiKey = "7ab4aad915c97e3f0a93de8e8d570956";
+
+  function openWeatherModal() {
+    document.getElementById('weatherModal').style.display = 'flex';
+  }
+  function closeWeatherModal() {
+    document.getElementById('weatherModal').style.display = 'none';
+  }
+  document.getElementById('weatherModal').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('weatherModal')) closeWeatherModal();
+  });
+  document.getElementById('closeWeatherModal').addEventListener('click', closeWeatherModal);
+
+  async function getWeatherByCity() {
+    const city = document.getElementById('cityInput').value.trim();
+    const out = document.getElementById('weatherResult');
+    if (!city) { out.innerHTML = "⚠️ Please enter a place name!"; return; }
+    out.innerHTML = "Loading weather...";
+    try {
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)},IN&appid=${apiKey}&units=metric`);
+      const data = await response.json();
+      if (data.cod !== 200) {
+        out.innerHTML = `⚠️ "${city}" not found, try GPS or a nearby town.`;
+      } else {
+        out.innerHTML = `<b>📍 ${data.name}:</b> ${data.main.temp} °C — ${data.weather[0].description} <br>Humidity: ${data.main.humidity}% · Wind: ${data.wind.speed} m/s`;
+      }
+    } catch(e){ out.innerHTML = "⚠️ Weather error"; console.error(e); }
+  }
+
+  function getWeatherByLocation() {
+    const out = document.getElementById('weatherResult');
+    if (!navigator.geolocation) { out.innerHTML = "⚠️ Geolocation not supported."; return; }
+    out.innerHTML = "Getting location...";
+    navigator.geolocation.getCurrentPosition(async (pos) => {
+      try {
+        const lat = pos.coords.latitude, lon = pos.coords.longitude;
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
+        const data = await response.json();
+        if (data.cod !== 200) out.innerHTML = `❌ ${data.message}`;
+        else out.innerHTML = `<b>📍 ${data.name}:</b> ${data.main.temp} °C — ${data.weather[0].description} <br>Humidity: ${data.main.humidity}% · Wind: ${data.wind.speed} m/s`;
+      } catch(e){ out.innerHTML = "⚠️ Weather error"; console.error(e); }
+    }, ()=>{ out.innerHTML = "⚠️ Location access denied."; });
+  }
+
+  // Mandi prices functions
+  function openMandiModal() {
+    document.getElementById('mandiModal').style.display = 'flex';
+  }
+  function closeMandiModal() {
+    document.getElementById('mandiModal').style.display = 'none';
+  }
+  document.getElementById('mandiModal').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('mandiModal')) closeMandiModal();
+  });
+  document.getElementById('closeMandiModal').addEventListener('click', closeMandiModal);
+
+  function searchMandiPrices() {
+    const state = document.getElementById('stateSelect').value;
+    const commodity = document.getElementById('commoditySelect').value;
+    const resultDiv = document.getElementById('mandiResult');
+
+    if (!state || !commodity) {
+      resultDiv.innerHTML = '<div class="error-message">⚠️ Please select both state and commodity</div>';
+      return;
+    }
+
+    resultDiv.innerHTML = '<div class="loading">Searching latest prices...</div>';
+
+    setTimeout(() => {
+      const sampleData = generateSamplePrices(state, commodity);
+      resultDiv.innerHTML = sampleData;
+    }, 1500);
+  }
+
+  function generateSamplePrices(state, commodity) {
+    // Define the mandis object with sample mandis for each state
+    const mandis = {
+      "Andhra Pradesh": ["Anantapur", "Chittoor", "East Godavari", "Guntur", "Kadapa", "Krishna", "Kurnool", "Nellore", "Prakasam", "Srikakulam", "Visakhapatnam", "West Godavari", "YSR Kadapa"],
+      "Arunachal Pradesh": ["Tawang", "West Kameng", "East Kameng", "Papum Pare", "Kurung Kumey", "Kra Daadi", "Lower Subansiri", "Upper Subansiri", "West Siang", "East Siang", "Siang", "Upper Siang", "Lower Siang", "Changlang", "Tirap", "Longding"],
+      "Assam": ["Baksa", "Barpeta", "Bongaigaon", "Cachar", "Chirang", "Darrang", "Dhemaji", "Dhubri", "Dibrugarh", "Goalpara", "Golaghat", "Hailakandi", "Jorhat", "Kamrup", "Kamrup Metropolitan", "Karbi Anglong", "Karimganj", "Kokrajhar", "Lakhisarai", "Majuli", "Morigaon", "Nagaon", "Nalbari", "Sivasagar", "Sonitpur", "South Salmara-Mankachar", "Tinsukia", "Udalguri", "West Karbi Anglong"],
+      "Bihar": ["Araria", "Arwal", "Aurangabad", "Banka", "Begusarai", "Bhagalpur", "Bhojpur", "Buxar", "Darbhanga", "East Champaran", "Gaya", "Gopalganj", "Jamui", "Jehanabad", "Kaimur", "Katihar", "Khagaria", "Kishanganj", "Lakhisarai", "Madhepura", "Madhubani", "Munger", "Muzaffarpur", "Nalanda", "Nawada", "Patna", "Purnia", "Rohtas", "Saharsa", "Samastipur", "Saran", "Sheikhpura", "Sheohar", "Sitamarhi", "Siwan", "Supaul", "Vaishali", "West Champaran"],
+      "Chhattisgarh": ["Balod", "Baloda Bazar", "Balrampur", "Bastar", "Bemetara", "Bijapur", "Bilaspur", "Dantewada", "Dhamtari", "Durg", "Gariaband", "Janjgir-Champa", "Jashpur", "Kabirdham", "Kanker", "Korba", "Kondagaon", "Koriya", "Mahasamund", "Mungeli", "Narayanpur", "Raigarh", "Raipur", "Rajnandgaon", "Sukma", "Surajpur", "Surguja"],
+      "Goa": ["North Goa", "South Goa"],
+      "Gujarat": ["Ahmedabad", "Amreli", "Anand", "Aravalli", "Banaskantha", "Bharuch", "Bhavnagar", "Botad", "Chhota Udepur", "Dahod", "Dang", "Devbhoomi Dwarka", "Gandhinagar", "Gir Somnath", "Jamnagar", "Junagadh", "Kachchh", "Kheda", "Mahisagar", "Mehsana", "Morbi", "Narmada", "Navsari", "Panchmahal", "Patan", "Porbandar", "Rajkot", "Sabarkantha", "Surat", "Surendranagar", "Tapi", "Vadodara", "Valsad"],
+      "Haryana": ["Ambala", "Bhiwani", "Charkhi Dadri", "Faridabad", "Fatehabad", "Gurugram", "Hisar", "Jhajjar", "Jind", "Kaithal", "Karnal", "Kurukshetra", "Mahendragarh", "Nuh", "Palwal", "Panchkula", "Pataudi", "Rewari", "Rohtak", "Sirsa", "Sonipat", "Yamunanagar"],
+      "Himachal Pradesh": ["Bilaspur", "Chamba", "Hamirpur", "Kangra", "Kinnaur", "Kullu", "Lahaul and Spiti", "Mandi", "Shimla", "Sirmaur", "Solan", "Una"],
+      "Jharkhand": ["Bokaro", "Chatra", "Deoghar", "Dhanbad", "Dumka", "East Singhbhum", "Garmah", "Giridih", "Godda", "Gumla", "Hazaribagh", "Jamtara", "Khunti", "Koderma", "Latehar", "Lohardaga", "Pakur", "Palamu", "Ramgarh", "Ranchi", "Sahibganj", "Seraikela Kharsawan", "Simdega", "West Singhbhum"],
+      "Karnataka": ["Bagalkot", "Bangalore Rural", "Bangalore Urban", "Belagavi", "Bellary", "Bidar", "Chamarajanagar", "Chikkaballapur", "Chikkamagaluru", "Chitradurga", "Dakshina Kannada", "Davanagere", "Dharwad", "Gadag", "Hassan", "Haveri", "Kolar", "Koppal", "Mandya", "Mysuru", "Raichur", "Ramanagara", "Shivamogga", "Tumakuru", "Udupi", "Uttara Kannada", "Vijayapura", "Vijayanagara", "Yadgir"],
+      "Kerala": ["Alappuzha", "Ernakulam", "Idukki", "Kottayam", "Kozhikode", "Malappuram", "Palakkad", "Pathanamthitta", "Thiruvananthapuram", "Thrissur", "Wayanad"],
+      "Madhya Pradesh": ["Alirajpur", "Anuppur", "Ashoknagar", "Balaghat", "Barwani", "Betul", "Bhind", "Bhopal", "Burhanpur", "Chhatarpur", "Chhindwara", "Damoh", "Datia", "Dewas", "Dhar", "Dindori", "Guna", "Gwalior", "Harda", "Hoshangabad", "Indore", "Jabalpur", "Jhabua", "Katni", "Khandwa", "Khargone", "Mandla", "Mandsaur", "Morena", "Narsinghpur", "Neemuch", "Panna", "Raisen", "Rajgarh", "Ratlam", "Rewa", "Sagar", "Satna", "Sehore", "Seoni", "Shahdol", "Shajapur", "Sheopur", "Shivpuri", "Sidhi", "Singrauli", "Tikamgarh", "Ujjain", "Umaria", "Vidisha"],
+      "Maharashtra": ["Ahmednagar", "Akola", "Amravati", "Aurangabad", "Beed", "Bhandara", "Buldhana", "Chandrapur", "Dhule", "Gadchiroli", "Gondia", "Hingoli", "Jalgaon", "Jalna", "Kolhapur", "Latur", "Mumbai City", "Mumbai Suburban", "Nagpur", "Nanded", "Nashik", "Osmanabad", "Palghar", "Parbhani", "Pune", "Raigad", "Ratnagiri", "Sangli", "Satara", "Sindhudurg", "Solapur", "Thane", "Wardha", "Washim", "Yavatmal"],
+      "Manipur": ["Bishnupur", "Chandel", "Churachandpur", "Imphal East", "Imphal West", "Jiribam", "Kakching", "Kamjong", "Kangpokpi", "Noney", "Pherzawl", "Senapati", "Tamenglong", "Tengnoupal", "Thoubal", "Ukhrul"],
+      "Meghalaya": ["East Garo Hills", "East Jaintia Hills", "East Khasi Hills", "North Garo Hills", "Ri Bhoi", "South Garo Hills", "South West Garo Hills", "South West Khasi Hills", "West Garo Hills", "West Jaintia Hills", "West Khasi Hills"],
+      "Mizoram": ["Aizawl", "Champhai", "Kolasib", "Lawngtlai", "Lunglei", "Mamit", "Saiha", "Serchhip", "Hnahthial"],
+      "Nagaland": ["Dimapur", "Kiphire", "Kohima", "Longleng", "Mokokchung", "Mon", "Peren", "Phek", "Tuensang", "Wokha", "Zunheboto"],
+      "Odisha": ["Angul", "Balangir", "Balasore", "Bargarh", "Bhadrak", "Boudh", "Cuttack", "Deogarh", "Dhenkanal", "Gajapati", "Ganjam", "Jagatsinghpur", "Jajpur", "Jharsuguda", "Kalahandi", "Kandhamal", "Kendrapara", "Kendujhar", "Khordha", "Koraput", "Malkangiri", "Mayurbhanj", "Nabarangpur", "Nuapada", "Puri", "Rayagada", "Sambalpur", "Sonepur", "Sundergarh"],
+      "Punjab": ["Amritsar", "Barnala", "Bathinda", "Fatehgarh Sahib", "Fazilka", "Firozpur", "Gurdaspur", "Hoshiarpur", "Jalandhar", "Kapurthala", "Ludhiana", "Mansa", "Moga", "Muktsar", "Pathankot", "Patiala", "Rupnagar", "Sangrur", "Shaheed Bhagat Singh Nagar", "Tarn Taran"],
+      "Rajasthan": ["Ajmer", "Alwar", "Banswara", "Baran", "Barmer", "Bharatpur", "Bhilwara", "Bikaner", "Bundi", "Chittorgarh", "Churu", "Dausa", "Dholpur", "Dungarpur", "Hanumangarh", "Jaipur", "Jaisalmer", "Jalore", "Jhalawar", "Jhunjhunu", "Jodhpur", "Karauli", "Kota", "Nagaur", "Pali", "Pratapgarh", "Rajsamand", "Sawai Madhopur", "Sikar", "Sirohi", "Sri Ganganagar", "Tonk", "Udaipur"],
+      "Sikkim": ["East Sikkim", "North Sikkim", "South Sikkim", "West Sikkim"],
+      "Tamil Nadu": ["Ariyalur", "Chennai", "Coimbatore", "Cuddalore", "Dharmapuri", "Dindigul", "Erode", "Kanchipuram", "Kanyakumari", "Karur", "Krishnagiri", "Madurai", "Nagapattinam", "Namakkal", "Nilgiris", "Perambalur", "Pudukkottai", "Ramanathapuram", "Salem", "Sivaganga", "Tanjore", "Theni", "Thoothukudi", "Tiruchirappalli", "Tirunelveli", "Tiruppur", "Tiruvallur", "Tiruvannamalai", "Tiruvarur", "Vellore", "Viluppuram", "Virudhunagar"],
+      "Telangana": ["Adilabad", "Bhadradri Kothagudem", "Hyderabad", "Jagtial", "Jangaon", "Jayashankar Bhupalpally", "Jogulamba Gadwal", "Kamareddy", "Karimnagar", "Khammam", "Kothagudem", "Mahabubabad", "Mahbubnagar", "Mancherial", "Medak", "Medchal-Malkajgiri", "Nagarkurnool", "Nalgonda", "Nirmal", "Nizamabad", "Peddapalli", "Rajanna Sircilla", "Rangareddy", "Sangareddy", "Siddipet", "Suryapet", "Vikarabad", "Wanaparthy", "Warangal Rural", "Warangal Urban", "Yadadri Bhuvanagiri"],
+      "Tripura": ["Dhalai", "Gomati", "Khowai", "North Tripura", "Sepahijala", "South Tripura", "Unakoti", "West Tripura"],
+      "Uttar Pradesh": ["Agra", "Aligarh", "Ambedkar Nagar", "Amethi", "Amroha", "Auraiya", "Ayodhya", "Azamgarh", "Baghpat", "Bahraich", "Ballia", "Balrampur", "Banda", "Barabanki", "Bareilly", "Basti", "Bhadohi", "Bijnor", "Budaun", "Bulandshahr", "Chandauli", "Chitrakoot", "Deoria", "Etah", "Etawah", "Farrukhabad", "Fatehpur", "Firozabad", "Gautam Buddha Nagar", "Gurugram", "Hapur", "Hardoi", "Hathras", "Jalaun", "Jaunpur", "Jhansi", "Kanshiram Nagar", "Kushinagar", "Lalitpur", "Lucknow", "Maharajganj", "Mahoba", "Mainpuri", "Mathura", "Mau", "Meerut", "Mirzapur", "Moradabad", "Muzaffarnagar", "Pilibhit", "Pratapgarh", "Rae Bareli", "Rampur", "Saharanpur", "Sambhal", "Siddharthnagar", "Sonbhadra", "Sultanpur", "Unnao", "Varanasi"],
+      "Uttarakhand": ["Almora", "Bageshwar", "Chamoli", "Champawat", "Dehradun", "Haridwar", "Nainital", "Pauri Garhwal", "Pithoragarh", "Rudraprayag", "Tehri Garhwal", "Udham Singh Nagar", "Uttarkashi"],
+      "West Bengal": ["Alipurduar", "Bankura", "Birbhum", "Cooch Behar", "Dooars", "Dhanbad", "Hooghly", "Howrah", "Jalpaiguri", "Jhargram", "Kalimpong", "Kolkata", "Malda", "Murshidabad", "Nadia", "North 24 Parganas", "Paschim Bardhaman", "Paschim Medinipur", "Purba Bardhaman", "Purba Medinipur", "Purulia", "South 24 Parganas", "Uttar Dinajpur"]
+    };
+
+    // Sample prices array
+    const prices = {
+      wheat: [2150, 2200, 2100, 2150, 2175],
+      rice: [1890, 1900, 1880, 1875, 1905],
+      tomato: [40, 42, 38, 41, 39],
+      potato: [25, 27, 24, 26, 23],
+      onion: [35, 36, 34, 33, 37],
+      cotton: [6500, 6600, 6400, 6550, 6450],
+      maize: [1800, 1850, 1790, 1825, 1810],
+      sugarcane: [320, 330, 310, 325, 315],
+      soybean: [4200, 4300, 4100, 4250, 4150],
+      mustard: [5200, 5300, 5100, 5250, 5150],
+      barley: [1500, 1520, 1480, 1510, 1490],
+      millet: [1600, 1620, 1580, 1610, 1590],
+      groundnut: [4000, 4100, 3900, 4050, 3950],
+      pulses: [5000, 5100, 4900, 5050, 4950],
+      chili: [7500, 7600, 7400, 7550, 7450],
+      cabbage: [15, 16, 14, 15, 17],
+      cauliflower: [20, 21, 19, 20, 22],
+      brinjal: [25, 26, 24, 25, 27],
+      cucumber: [18, 19, 17, 18, 20],
+      banana: [30, 32, 28, 31, 29],
+      mango: [50, 52, 48, 51, 49],
+      apple: [120, 125, 115, 122, 118],
+      grapes: [80, 85, 75, 82, 78],
+      orange: [40, 42, 38, 41, 39],
+      pineapple: [35, 36, 34, 35, 37],
+      guava: [40, 42, 38, 41, 39],
+      watermelon: [20, 21, 19, 20, 22],
+      muskmelon: [25, 26, 24, 25, 27],
+      lemon: [15, 16, 14, 15, 17],
+      papaya: [30, 32, 28, 31, 29]
+    };
+
+    // Capitalize first letter of strings
+    const capitalize = s => s.charAt(0).toUpperCase() + s.slice(1);
+
+    // Generate HTML
+    let html = `<h3>Latest ${capitalize(commodity)} Prices in ${capitalize(state)}</h3>
+                <div class="price-table">
+                  <div class="price-row header">
+                    <div>Mandi Name</div>
+                    <div>Commodity</div>
+                    <div>Price</div>
+                  </div>`;
+    // Loop over mandis and generate sample prices
+    const mandiList = mandis[state];
+    const priceArray = prices[commodity];
+
+    for (let mandi of mandiList) {
+      const randPrice = priceArray[Math.floor(Math.random() * priceArray.length)];
+      html += `
+        <div class="price-row">
+          <div>${mandi}</div>
+          <div>${capitalize(commodity)}</div>
+          <div>₹${randPrice.toLocaleString()}</div>
+        </div>`;
+    }
+
+    html += `</div>`;
+    return html;
+  }
+
+
+</script>
+</body>
+</html>
