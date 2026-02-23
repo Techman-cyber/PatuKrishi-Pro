@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>PatuKrishi – Sustainable Farming</title>
+  <title>PatuKrishi · Smart Farming for Indian Farmers</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Icons -->
@@ -38,54 +38,253 @@
   <header class="header">
     <nav class="navbar container">
       <div class="logo">
-        <h1>PatuKrishi</h1>
+        <span class="logo-mark">PK</span>
+        <div class="logo-text">
+          <h1>PatuKrishi</h1>
+          <p>Smart Farming for Indian Farmers</p>
+        </div>
       </div>
 
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
         <li><a href="#tools">Tools</a></li>
+        <li><a href="#analytics">Analytics</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
         <li id="authNav"><a href="#" id="authButton">Login</a></li>
         <li><a href="#" id="preferencesButton">Preferences</a></li>
-
       </ul>
 
-      <button class="mobile-menu" id="menuToggle">
+      <button class="mobile-menu" id="menuToggle" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
       </button>
     </nav>
   </header>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h2>Smart Farming for India</h2>
-      <p>Weather, Mandi Prices & Crop Advisory in one place</p>
-      <a href="#tools" class="btn btn-primary">Explore Tools</a>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <span class="hero-badge">PatuKrishi · Smart Farming</span>
+          <h2 class="hero-title">Welcome Farmer 🙏</h2>
+          <p class="hero-subtitle">
+            Your personal agri-companion for weather, mandi prices, crop lens, and full-season advisory.
+          </p>
+
+          <ul class="hero-highlights">
+            <li>✅ Live mandi prices across India</li>
+            <li>✅ Weather forecast with smart alerts</li>
+            <li>✅ Season-wise crop advisory (Rabi · Kharif · Zaid)</li>
+          </ul>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="openHeroSignup()">Sign up free</button>
+            <button class="btn btn-ghost" onclick="openHeroLogin()">Login</button>
+          </div>
+
+          <p class="hero-note">#01 🌱 Always test your soil before sowing for better yield.</p>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-auth-card">
+            <div class="hero-auth-header">
+              <h3>Namaste, Farmer 🌾</h3>
+              <p>Aapka apna kisan dost – smart farming ke saath</p>
+            </div>
+            <div class="hero-auth-body">
+              <p class="muted">Login or create your account to save preferences and alerts.</p>
+              <div class="hero-auth-actions">
+                <button class="btn btn-primary" onclick="openHeroLogin()">Login</button>
+                <button class="btn btn-outline" onclick="openHeroSignup()">Create account</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE FEATURES -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-heading center">
+          <h2 class="section-title">🌱 PatuKrishi – Smart Farming</h2>
+          <p class="section-lead">
+            🇮🇳 India mein kisanon ko samay par sahi jaankari milna bahut zaroori hai.
+            PatuKrishi aapko deta hai live mandi bhav, mausam ka poorv anuman, crop lens aur
+            sowing se harvest tak ki salah – sab ek hi jagah.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Weather</h3>
+            <p>Live forecast · crop recommendation</p>
+            <button class="btn link-btn" onclick="openWeatherModal()">Open Weather tool</button>
+          </article>
+          <article class="feature-card">
+            <h3>Mandi Prices</h3>
+            <p>All states &amp; UTs · districts · multiple rates</p>
+            <button class="btn link-btn" onclick="openMandiModal()">Check mandi bhav</button>
+          </article>
+          <article class="feature-card">
+            <h3>Advisory</h3>
+            <p>State/UT + crop · 3-step guide</p>
+            <button class="btn link-btn" onclick="openCropModal()">Get crop advisory</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section class="tools-section container" id="tools">
+      <h2 class="section-title">Farmer Tools</h2>
+
+      <div class="tools-grid">
+        <div class="tool-card" onclick="openWeatherModal()">
+          <h3>🌦 Weather · Mausam Salah</h3>
+          <p>Dekhiye aapke sheher ka live mausam aur faslon ke liye salah.</p>
+        </div>
+
+        <div class="tool-card" onclick="openMandiModal()">
+          <h3>📊 Mandi Prices · Kai Bhav</h3>
+          <p>Sabhi rajyon ke mandi bhav ek jagah – wheat, rice, cotton aur aur bhi.</p>
+        </div>
+
+        <div class="tool-card" onclick="openCropModal()">
+          <h3>🌱 Crop Advisory · Pura Guide</h3>
+          <p>Rabi, Kharif, Zaid ke liye 3-step guide · location-based salah.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANALYTICS -->
+    <section class="section analytics" id="analytics">
+      <div class="container">
+        <div class="section-heading center">
+          <h2 class="section-title">Farming Analytics · Data Insights</h2>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <p class="stat-number">12.5 Cr+</p>
+            <p class="stat-label">Happy Farmers</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-number">₹42,500</p>
+            <p class="stat-label">Avg Profit/Acre</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-number">15</p>
+            <p class="stat-label">Weather Alerts</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-number">8.5 Cr+</p>
+            <p class="stat-label">Active Farms</p>
+          </div>
+        </div>
+
+        <div class="analytics-grid">
+          <div class="analytics-card">
+            <h3>📈 Price Trends (Last 6 Months)</h3>
+            <p class="muted">Visual price trend insights coming soon. Use mandi tool for live prices.</p>
+          </div>
+          <div class="analytics-card">
+            <h3>🌡️ Weather Patterns</h3>
+            <p class="muted">Compare temperature and rainfall patterns season-wise.</p>
+          </div>
+          <div class="analytics-card">
+            <h3>💰 Profit Calculator</h3>
+            <p class="muted">
+              Estimate profit for crops like Wheat, Rice, Cotton, Sugarcane, Potato – feature coming soon.
+            </p>
+          </div>
+          <div class="analytics-card">
+            <h3>📊 Market Insights</h3>
+            <ul class="mini-market-list">
+              <li>Wheat: ₹2,450/q <span class="trend up">+3.2%</span></li>
+              <li>Rice: ₹2,150/q <span class="trend up">+2.1%</span></li>
+              <li>Cotton: ₹7,200/q <span class="trend up">+4.5%</span></li>
+              <li>Potato: ₹2,850/q <span class="trend down">-1.5%</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+      <div class="container about-grid">
+        <div>
+          <h2 class="section-title">About Us · Hamari Kahani</h2>
+          <h3>Our Mission</h3>
+          <p>To empower every Indian farmer with technology-driven solutions for sustainable and profitable farming.</p>
+
+          <h3>Our Vision</h3>
+          <p>Create a digital ecosystem where every farmer has access to real-time market data, weather intelligence, and expert guidance.</p>
+
+          <h3>Our Values</h3>
+          <p>Integrity, Innovation, Inclusivity – farmers first, hamesha.</p>
+        </div>
+
+        <aside class="founder-card">
+          <h3>Chanakya Sahni</h3>
+          <p class="muted">Founder &amp; Developer</p>
+          <p>
+            "I built PatuKrishi because our farmers deserve a friend in the digital world—someone who
+            speaks their language, understands their struggles, and helps them grow."
+          </p>
+          <p class="muted">
+            Email: <a href="mailto:patukrishi@gmail.com">patukrishi@gmail.com</a><br>
+            Phone: <a href="tel:+919866193066">+91 98661 93066</a>
+          </p>
+        </aside>
+      </div>
+
+      <div class="container why-grid">
+        <div class="why-card">
+          <h3>❓ Why Farmers Choose PatuKrishi</h3>
+          <ul>
+            <li><strong>Real-time Data</strong> – Live mandi prices and weather</li>
+            <li><strong>AI-Powered (future-ready)</strong> – Smart disease detection</li>
+            <li><strong>Local Languages</strong> – Hindi, Bengali, Telugu, Marathi, Gujarati, and more</li>
+            <li><strong>100% Free</strong> – Always free for farmers</li>
+          </ul>
+        </div>
+        <div class="why-card">
+          <h3>Krishi Bot</h3>
+          <p>🙏 Namaskar! Main aapka Krishi Bot hoon. Poochhiye - mandi bhav, mausam, crop lens, advisory, analytics ya kuch bhi!</p>
+          <p class="muted">Use the green chat button at the bottom-right to start chatting.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <h2 class="section-title">Send Us A Message</h2>
+          <p>Have questions? We'd love to hear from you!</p>
+          <a class="btn btn-primary" href="https://forms.gle/hFBDBvpBx5V3WKm28" target="_blank" rel="noopener">
+            Open Google Form
+          </a>
+          <p class="muted mt-1">📝 Click the button above to open the form.</p>
+        </div>
+        <div class="contact-card">
+          <h3>Edit Profile &amp; Alerts</h3>
+          <p>Update your state, city, crops, and alerts so that PatuKrishi can personalise mandi and weather insights.</p>
+          <button class="btn btn-outline" onclick="openPreferences()">Open preferences</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© PatuKrishi · Built for Indian farmers with love 💚</p>
     </div>
-  </section>
-
-  <!-- TOOLS -->
-  <section class="tools-section container" id="tools">
-    <h2 class="section-title">Farmer Tools</h2>
-
-    <div class="tools-grid">
-      <div class="tool-card" onclick="openWeatherModal()">
-        <h3>🌦 Weather</h3>
-        <p>Live local weather updates</p>
-      </div>
-
-      <div class="tool-card" onclick="openMandiModal()">
-        <h3>📊 Mandi Prices</h3>
-        <p>Check latest crop prices</p>
-      </div>
-
-      <div class="tool-card" onclick="openCropModal()">
-        <h3>🌱 Crop Advisory</h3>
-        <p>Season-wise farming guidance</p>
-      </div>
-    </div>
-  </section>
+  </footer>
 
   <!-- CHATBOT -->
   <button class="chat-toggle-btn" id="chatToggle">

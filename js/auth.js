@@ -20,14 +20,21 @@ firebaseAuth.onAuthStateChanged(user => {
 ========================= */
 let authMode = "login"; // login | signup
 
+function setAuthMode(mode) {
+  authMode = mode;
+
+  const titleEl = document.getElementById("authTitle");
+  const nameEl = document.getElementById("authName");
+
+  if (!titleEl || !nameEl) return;
+
+  titleEl.textContent = authMode === "login" ? "Login" : "Signup";
+  nameEl.style.display = authMode === "signup" ? "block" : "none";
+}
+
 function toggleAuthMode() {
-  authMode = authMode === "login" ? "signup" : "login";
-
-  document.getElementById("authTitle").textContent =
-    authMode === "login" ? "Login" : "Signup";
-
-  document.getElementById("authName").style.display =
-    authMode === "signup" ? "block" : "none";
+  const nextMode = authMode === "login" ? "signup" : "login";
+  setAuthMode(nextMode);
 }
 
 /* =========================
@@ -70,6 +77,7 @@ if (authButton) {
     if (firebaseAuth.currentUser) {
       firebaseAuth.signOut();
     } else {
+      setAuthMode("login");
       openModal("authModal");
     }
   });
@@ -81,3 +89,14 @@ if (preferencesButton) {
     openPreferences();
   });
 }
+
+// Hero shortcuts
+window.openHeroLogin = function () {
+  setAuthMode("login");
+  openModal("authModal");
+};
+
+window.openHeroSignup = function () {
+  setAuthMode("signup");
+  openModal("authModal");
+};
