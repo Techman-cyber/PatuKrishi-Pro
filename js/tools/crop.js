@@ -9,18 +9,6 @@ async function generateCropAdvice() {
   if (!location) {
     resultBox.innerHTML = "<p>Please enter your state.</p>";
     return;
-
-  const user = getCurrentUser();
-let preferredNote = "";
-
-if (user) {
-  const prefs = getPreferences(user.email);
-  if (prefs.crops && prefs.crops.length) {
-    preferredNote = `
-      <p><strong>Your preferred crops:</strong>
-      ${preferredNote}</p>`;
-  }
-}
   }
 
   resultBox.innerHTML = '<div class="shimmer" style="height:20px;"></div>';
@@ -42,10 +30,9 @@ if (user) {
 
   // Try to reuse weather temperature if available
   let tempNote = "Temperature data not available.";
-  let temp = null;
 
-  if (window.lastWeatherTemp) {
-    temp = window.lastWeatherTemp;
+  if (window.lastWeatherTemp != null) {
+    const temp = window.lastWeatherTemp;
     tempNote = `Current temperature: ${temp}°C`;
   }
 

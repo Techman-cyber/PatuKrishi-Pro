@@ -52,6 +52,7 @@ function savePreferences() {
       city: document.getElementById("prefCity").value.trim()
     },
     crops: [...document.querySelectorAll("#prefsModal input[type=checkbox][value]")]
+      .filter(cb => cb.checked)
       .map(cb => cb.value),
     alerts: {
       weather: document.getElementById("alertWeather").checked,

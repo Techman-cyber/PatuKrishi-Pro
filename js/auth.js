@@ -20,17 +20,6 @@ firebaseAuth.onAuthStateChanged(user => {
 ========================= */
 let authMode = "login"; // login | signup
 
-window.openModal = function (id) {
-  const el = document.getElementById(id);
-  if (el) el.style.display = "block";
-};
-
-window.closeModal = function (id) {
-  const el = document.getElementById(id);
-  if (el) el.style.display = "none";
-};
-
-
 function toggleAuthMode() {
   authMode = authMode === "login" ? "signup" : "login";
 

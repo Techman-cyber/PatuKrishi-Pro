@@ -44,13 +44,12 @@ async function fetchWeather() {
         <p><strong>Condition:</strong> Weather code ${w.weathercode}</p>
       </div>
     `;
+
+    checkWeatherAlerts(w.temperature);
   } catch (err) {
     console.error(err);
     resultBox.innerHTML = "<p>Unable to fetch weather.</p>";
   }
-
-checkWeatherAlerts(w.temperature);
-
 }
 
 function checkWeatherAlerts(temp) {
