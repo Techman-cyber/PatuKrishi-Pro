@@ -249,12 +249,14 @@ section {
   color: #666;
 }
 
-.navbar .nav-links {
-  display: flex;
-  align-items: center;
-  gap: 1.4rem;
-  list-style: none;
-  margin-left: auto;
+@media (min-width: 769px) {
+  .navbar .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    list-style: none;
+    margin-left: auto;
+  }
 }
 
 /* Analytics & stats */
@@ -375,6 +377,25 @@ section {
   text-align: center;
   font-size: 0.9rem;
   color: #666;
+}
+
+/* Header on scroll */
+.header.scrolled {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+}
+
+/* Scroll reveal */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-fade.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Responsive tweaks */
